@@ -1,24 +1,24 @@
 [submodule "subs/SoapySDRPlay3"]
 	path = subs/SoapySDRPlay3
-	url = master https://github.com/luarvique/SoapySDRPlay3.git
+	url = https://github.com/luarvique/SoapySDRPlay3.git
 [submodule "subs/csdr"]
 	path = subs/csdr
-	url = master https://github.com/luarvique/csdr.git
+	url = https://github.com/luarvique/csdr.git
 [submodule "subs/pycsdr"]
 	path = subs/pycsdr
-	url = master https://github.com/luarvique/pycsdr.git
+	url = https://github.com/luarvique/pycsdr.git
 [submodule "subs/owrx_connector"]
 	path = subs/owrx_connector
-	url = master https://github.com/luarvique/owrx_connector.git
+	url = https://github.com/luarvique/owrx_connector.git
 [submodule "subs/codecserver"]
 	path = subs/codecserver
-	url = master https://github.com/jketterl/codecserver.git
+	url = https://github.com/jketterl/codecserver.git
 [submodule "subs/digiham"]
 	path = subs/digiham
-	url = master https://github.com/jketterl/digiham.git
+	url = https://github.com/jketterl/digiham.git
 [submodule "subs/pydigiham"]
 	path = subs/pydigiham
-	url = master https://github.com/jketterl/pydigiham.git
+	url = https://github.com/jketterl/pydigiham.git
 [submodule "subs/csdr-eti"]
 	path = subs/csdr-eti
 	url = https://github.com/luarvique/csdr-eti.git
@@ -27,10 +27,10 @@
 	url = https://github.com/luarvique/pycsdr-eti.git
 [submodule "subs/js8py"]
 	path = subs/js8py
-	url = master https://github.com/jketterl/js8py.git
+	url = https://github.com/jketterl/js8py.git
 [submodule "subs/redsea"]
 	path = subs/redsea
-	url = master https://github.com/luarvique/redsea.git
+	url = https://github.com/luarvique/redsea.git
 [submodule "subs/csdr-cwskimmer"]
 	path = subs/csdr-cwskimmer
 	url = https://github.com/luarvique/csdr-cwskimmer.git
