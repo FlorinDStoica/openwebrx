@@ -377,6 +377,8 @@ class OpenWebRxReceiverClient(OpenWebRxClient, SdrSourceEventClient):
         # Locked source's profile can only be changed with a key
         magic = self.stack["magic_key"]
         if self.sdr.isLocked(profile) and magic != "" and key != magic:
+            # Tell client of locked profile
+            self.write_log_message("This profile is locked, keeping current profile.")
             # Force update back to the current profile
             self.resetSdr()
 
@@ -492,6 +494,9 @@ class OpenWebRxReceiverClient(OpenWebRxClient, SdrSourceEventClient):
 
     def write_temperature(self, temp):
         self.mp_send({"type": "temperature", "value": temp})
+
+    def write_battery(self, battery):
+        self.mp_send({"type": "battery", "value": battery})
 
     def write_clients(self, clients):
         self.mp_send({"type": "clients", "value": clients})
