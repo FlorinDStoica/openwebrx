@@ -493,12 +493,16 @@ class SdrSource(ABC):
                 except AttributeError:
                     # self.process has been overwritten by the monitor since we checked it, which is fine
                     pass
+
             if self.monitor:
                 self.monitor.join()
+                self.monitor = None
+
             if self.tcpSource is not None:
                 self.tcpSource.stop()
                 self.tcpSource = None
-                self.buffer = None
+
+            self.buffer = None
 
     def shutdown(self):
         self.stop()
@@ -814,7 +818,7 @@ class SdrDeviceDescription(object):
         return ["name", "center_freq", "samp_rate", "start_freq", "start_mod", "tuning_step"]
 
     def getProfileOptionalKeys(self):
-        return [
+        keys = [
             "initial_squelch_level",
             "initial_nr_level",
             "rf_gain",
@@ -826,6 +830,9 @@ class SdrDeviceDescription(object):
             "rig_enabled",
             "key_locked",
         ]
+        if self.supportsPpm():
+            keys += ["ppm"]
+        return keys
 
     def getDeviceSection(self):
         return OptionalSection(

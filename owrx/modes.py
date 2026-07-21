@@ -149,10 +149,12 @@ class Modes(object):
         ),
         AnalogMode("nxdn", "NXDN", bandpass=Bandpass(-3250, 3250), requirements=["digital_voice_digiham"], squelch=False),
         AnalogMode("ysf", "YSF", bandpass=Bandpass(-6250, 6250), requirements=["digital_voice_digiham"], squelch=False),
+        AnalogMode("p25", "P25", bandpass=Bandpass(-6250, 6250), requirements=["digital_voice_digiham"], squelch=False),
         AnalogMode("m17", "M17", bandpass=Bandpass(-6250, 6250), requirements=["digital_voice_m17"], squelch=False),
-        AnalogMode(
-            "freedv", "FreeDV", bandpass=Bandpass(300, 3000), requirements=["digital_voice_freedv"], squelch=False
-        ),
+        AnalogMode("freedv", "FreeDV", bandpass=Bandpass(300, 3000), requirements=["digital_voice_freedv"], squelch=False),
+        AnalogMode("tetra", "TETRA", bandpass=Bandpass(-12500, 12500), requirements=["tetra"], squelch=False),
+        AnalogMode("radel", "RADEL", bandpass=Bandpass(-3000, -300), requirements=["digital_voice_rade"], squelch=False),
+        AnalogMode("radeu", "RADEU", bandpass=Bandpass(300, 3000), requirements=["digital_voice_rade"], squelch=False),
         AnalogMode("drm", "DRM", bandpass=Bandpass(-5000, 5000), requirements=["drm"], squelch=False),
         AnalogMode("dab", "DAB", bandpass=None, ifRate=2048000, requirements=["dab"], squelch=False),
         AnalogMode("hdr", "HDR", bandpass=Bandpass(-200000, 200000), requirements=["hdradio"], squelch=False),
@@ -177,20 +179,20 @@ class Modes(object):
         DigitalMode(
             "packet",
             "Packet",
-            underlying=["empty"], #["nfm", "usb", "lsb"],
+            underlying=["nfm"],
             bandpass=Bandpass(-6250, 6250),
             requirements=["packet"],
             service=True,
-            squelch=False,
+            squelch=False
         ),
         DigitalMode(
             "ais",
             "AIS",
-            underlying=["empty"], #["nfm"],
+            underlying=["nfm"],
             bandpass=Bandpass(-6250, 6250),
             requirements=["packet"],
             service=True,
-            squelch=False,
+            squelch=False
         ),
 # Replaced by Jakob's RTTY decoder
 #        DigitalMode("mfrtty170", "RTTY-170", underlying=["usb"]),
@@ -203,16 +205,16 @@ class Modes(object):
 #            bandpass=Bandpass(-6000, 6000),
 #            requirements=["pocsag"],
 #            service=True,
-#            squelch=False,
+#            squelch=False
 #        ),
         DigitalMode(
             "page",
             "Page",
-            underlying=["empty"], #["nfm"],
+            underlying=["nfm"],
             bandpass=Bandpass(-6000, 6000),
             requirements=["page"],
             service=True,
-            squelch=False,
+            squelch=True
         ),
         DigitalMode("cwdecoder", "CW Decoder", underlying=["usb", "lsb"]),
         DigitalMode(
@@ -222,7 +224,7 @@ class Modes(object):
             bandpass=Bandpass(0, 48000),
             requirements=["skimmer"],
             service=True,
-            squelch=False,
+            squelch=False
         ),
         DigitalMode(
             "rttyskimmer",
@@ -231,21 +233,21 @@ class Modes(object):
             bandpass=Bandpass(0, 48000),
             requirements=["skimmer"],
             service=True,
-            squelch=False,
+            squelch=False
         ),
         DigitalMode(
             "sstv",
             "SSTV",
             underlying=["usb", "lsb", "nfm"],
             service=True,
-            squelch=True,
+            squelch=True
         ),
         DigitalMode(
             "fax",
             "Fax",
             underlying=["usb"],
             service=True,
-            squelch=True,
+            squelch=True
         ),
         DigitalMode(
             "selcall",
@@ -291,7 +293,7 @@ class Modes(object):
         DigitalMode(
             "hfdl",
             "HFDL",
-            underlying=["empty"],
+            underlying=["usb"],
             bandpass=Bandpass(0, 3000),
             requirements=["hfdl"],
             service=True,
@@ -300,7 +302,7 @@ class Modes(object):
         DigitalMode(
             "vdl2",
             "VDL2",
-            underlying=["empty"],
+            underlying=["nfm"],
             bandpass=Bandpass(-12500, 12500),
             requirements=["vdl2"],
             service=True,
@@ -336,6 +338,122 @@ class Modes(object):
             service=True,
             squelch=False,
             secondaryFft=False
+        ),
+        # LoRa modes
+        DigitalMode(
+            "lora-wan",
+            "LoRa WAN",
+            underlying=["empty"],
+            bandpass=None,
+            ifRate=1000000,
+            requirements=["lora"],
+            service=True,
+            squelch=True
+        ),
+        DigitalMode(
+            "lora-aprs",
+            "LoRa APRS",
+            underlying=["empty"],
+            bandpass=None,
+            ifRate=1000000,
+            requirements=["lora"],
+            service=True,
+            squelch=True
+        ),
+        DigitalMode(
+            "lora-fanet",
+            "LoRa FANET",
+            underlying=["empty"],
+            bandpass=None,
+            ifRate=1000000,
+            requirements=["lora"],
+            service=True,
+            squelch=True
+        ),
+        DigitalMode(
+            "meshtastic",
+            "Meshtastic",
+            underlying=["empty"],
+            bandpass=None,
+            ifRate=1000000,
+            requirements=["meshtastic"],
+            service=True,
+            squelch=True
+        ),
+        DigitalMode(
+            "meshcore",
+            "Meshcore",
+            underlying=["empty"],
+            bandpass=None,
+            ifRate=1000000,
+            requirements=["lora"],
+            service=True,
+            squelch=True
+        ),
+        DigitalMode(
+            "meshcom",
+            "MeshCom",
+            underlying=["empty"],
+            bandpass=None,
+            ifRate=1000000,
+            requirements=["lora"],
+            service=True,
+            squelch=True
+        ),
+        # Radiosonde modes
+        DigitalMode(
+            "sonde-rs41",
+            "Sonde RS41",
+            underlying=["nfm"],
+            bandpass=Bandpass(-6250, 6250),
+            requirements=["sonde"],
+            service=True,
+            squelch=False
+        ),
+        DigitalMode(
+            "sonde-dfm9",
+            "Sonde DFM9",
+            underlying=["nfm"],
+            bandpass=Bandpass(-6250, 6250),
+            requirements=["sonde"],
+            service=True,
+            squelch=False
+        ),
+        DigitalMode(
+            "sonde-dfm17",
+            "Sonde DFM17",
+            underlying=["nfm"],
+            bandpass=Bandpass(-6250, 6250),
+            requirements=["sonde"],
+            service=True,
+            squelch=False
+        ),
+        DigitalMode(
+            "sonde-mts01",
+            "Sonde MTS01",
+            underlying=["nfm"],
+            bandpass=Bandpass(-6250, 6250),
+            requirements=["sonde"],
+            service=True,
+            squelch=False
+        ),
+        DigitalMode(
+            "sonde-m10",
+            "Sonde M10",
+            underlying=["nfm"],
+            bandpass=Bandpass(-12500, 12500),
+            requirements=["sonde"],
+            service=True,
+            squelch=False
+        ),
+        DigitalMode(
+            "sonde-m20",
+            "Sonde M20",
+            underlying=["nfm"],
+            bandpass=Bandpass(-12500, 12500),
+            requirements=["sonde"],
+            service=True,
+            squelch=False
         ),
         # Server-side audio recording is a background service only.
         # See JavaScript code for client-side audio recording.

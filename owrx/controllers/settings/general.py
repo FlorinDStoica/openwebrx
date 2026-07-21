@@ -294,6 +294,14 @@ class GeneralSettingsController(SettingsFormController):
                     + '<a href="https://openweathermap.org/appid" target="_blank">'
                     + "their documentation</a> on how to obtain one.",
                 ),
+# Will enable once this works.
+#                TextInput(
+#                    "repeaterbook_api_key",
+#                    "RepeaterBook API key",
+#                    infotext="RepeaterBook requires an API key, check out "
+#                    + '<a href="https://www.repeaterbook.com/api/token_request.php" target="_blank">'
+#                    + "their documentation</a> on how to obtain one.",
+#                ),
                 NumberInput(
                     "map_position_retention_time",
                     "Map retention time",
@@ -351,6 +359,20 @@ class GeneralSettingsController(SettingsFormController):
                     infotext="Specifies aircraft lookup URL, such as PLANESPOTTERS.NET, "
                     + "allowing to look up aircraft by their Mode-S codes. Place curly "
                     + "brackets ({}) where aircraft Mode-S code is supposed to be.",
+                ),
+                TextInput(
+                    "sonde_url",
+                    "Radiosonde database URL",
+                    infotext="Specifies radiosonde lookup URL, such as SONDEHUB.ORG, "
+                    + "allowing to look up sonde information by its ID number. "
+                    + "Place curly brackets ({}) where ID is supposed to be.",
+                ),
+                TextInput(
+                    "geoip_url",
+                    "IP geolocation URL",
+                    infotext="Specifies IP geolocation URL, such as GEOLOCATION.COM, "
+                    + "allowing to estimate geographic locations of IP addresses. "
+                    + "Place curly brackets ({}) where IP is supposed to be.",
                 ),
             ),
             Section(

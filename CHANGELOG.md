@@ -1,3 +1,147 @@
+**1.2.119**
+- Added unencrypted P25 support (please test).
+- Added total spot metrics to CW/RTTY skimmers.
+- Switched to forked Digiham libraries with P25.
+- Removed online font dependency from Settings.
+- Removed discontinued CHU beacon.
+
+**1.2.118**
+- Added native APRS IGate reporter module.
+- Added option for legacy Direwold IGate.
+- Added bookmark search (right button on icon).
+- Added [Y] shortcut to search bookmarks.
+- Handled case when feature binary not executable.
+- Multiple APRS decoders can report to APRS-IS.
+
+**1.2.117**
+- Added unencrypted Tetra support [Yiannis Sam].
+- Added support for ELAD FDM-S2 [DisagioDigitale].
+- Added ARINC622 payload parsing inside ACARS.
+- Added CPDLC payload parsing inside ACARS.
+- Added ADS-C payload parsing inside ACARS.
+- Added parsing ACARS legacy position reports.
+- Added ACARS parsing inside VDL2 and HFDL.
+- Added airplane temperature, wind, route display.
+- Added options to drop ACARS and VDL2 acks.
+- Added options for LoRa decoder bandwidths.
+- Made Meshtastic map objects use regular TTL.
+- Fixed flickering horizontal waterfall lines.
+- Fixed web agent threads hanging on exit.
+
+**1.2.116**
+- Added LoRa Meshtastic parser [Stanislav Lechev].
+- Added LoRa APRS parser [Stefan DC4HF].
+- Added Sondehub reporter for RS41 telemetry [Hai Tran].
+- Added paho-mqtt 2.0 compatibility [Marc Fontaine].
+- Added per-profile PPM correction option.
+- Fixed exception when stopping AdsbParser.
+- Fixed exception when stopping services.
+
+**1.2.115**
+- Added [T] shortcut to enter frequency [Rene Jaun].
+- Added [P] shortcut to select profile [Rene Jaun].
+- Added LoRa bands and frequencies [Stefan DC4HF].
+- Added MeshCom LoRa mode [Stefan DC4HF].
+- Added link to Android app.
+- Fixed single-stepping from unaligned frequency.
+- Fixed secondary sampling rate for services.
+- Fixed background audio recording rate to 128ksps.
+- Fixed weather RTTY bookmarks, removed duplicates
+- Optimized LoRa decoder invocations [Stefan DC4HF].
+- Updated feature install instructions.
+- Moved LoRa to its own source files.
+- Made more web assets zippable.
+
+**1.2.114**
+- Integrated dxlAPRS LoraRX tool.
+- Added LoRa WAN, LoRa APRS, and FANET modes.
+- Added LoRa Meshtastic and Meshcore modes.
+- Added setting for IP geolocation URL.
+- Added setting for the help page URL.
+- Blocked center frequency changes to <0Hz.
+- Updated IP geolocation URL since it changed.
+- Allowed more characters in WiFi SSIDs.
+- Escaped HTML entities in input field values.
+
+**1.2.113**
+- Greatly reduced memory footprint, eliminating leaks.
+- Now dropping unused modules and buffers immediately.
+- Fixed RigControl frequency at page load [Niccolo Izzo].
+- Fixed wrong audio rate when changing SDR source.
+- Fixed markers update thread hanging on exit.
+- Fixed ring buffers leaking from services.
+
+**1.2.112**
+- Fixed bookmarks sorting with older Python versions.
+- Improve JS plugin loader [Stanislav Lechev].
+
+**1.2.111**
+- Added support for the Amateur Repeater Directory (US only).
+- Added selection of the actual PerseusSDR sample rates.
+- Added Brazilian CB bookmarks [xnetinho].
+- Sorted repeaters data to speed up bookmarks generation.
+- Sorted EIBI data to speed up bookmarks generation.
+- Now showing local time in the chat rather than UTC.
+- Now updating repeater list weekly, not daily.
+
+**1.2.110**
+- Added AIS reporting to VesselFinder [Ari Cooper Davis].
+- Added 48kHz-2MHz sample rates for PerseusSDR [oettlalb].
+- Added 128MHz ADC support for RX-888mkII [SteamedFish].
+- Added 64MHz sample rate for RX-888mkII [SteamedFish].
+- No longer removing chain when stopping DSP.
+
+**1.2.109**
+- Added separate RADEL and RADEU modes.
+- Added trusted proxies config [Giulio Fieramosca].
+- Added back sound for digital modes.
+- Updated feature installation instructions.
+- Updated integration with latest NRSC5.
+- Updated AcarsDec version check.
+
+**1.2.108**
+- Added 100% UI opacity bump option.
+- Added FreeDV RADEv1 digital voice support.
+- Added SoapyMiri gain stages [Sergei Korolev].
+- Added LimeSDR gain stages [Sergei Korolev].
+
+**1.2.107**
+- Added SnR levels display to the skimmer.
+- Added AGC settings for AM and NFM modes.
+- Fixed DRM metadata display to skip missing items.
+- Fixed sonde speed display on the map.
+- Optimized skimmer window rendering.
+- Renamed CwSkimmer JS class to Skimmer.
+
+**1.2.106**
+- Added more sampling rates for Malahit-R1.
+- Insured IOC576 won't take precedence over IOC288.
+- Slowed AGC attack response to avoid clicking.
+- Fixed updateLocation() bug in the sonde decoder.
+- Fixed error parsing sonde type and subtype.
+- Truncated ascent/descent speeds to one decimal.
+- Recreating filter when secondary demodulator set.
+- Decreased initial WiFi check delay.
+
+**1.2.105**
+- Added receiving sonde spots over MQTT.
+- Added SnR readings to the skimmer reports.
+- Added profile-specific Malahit-R1 options.
+- Added MTS01 sonde support [Yiannis Sam].
+- Extended M10/M20 bandpass filter to 25kHz.
+- Converted sonde speed from m/s to km/h.
+- Optimized UI bandpass limits calculation.
+
+**1.2.104**
+- Added support for several radiosonde decoders.
+- Added setting for radiosonde lookup website.
+- Displaying more received info in PACKET panel.
+- Fixed battery display showing with no battery.
+- Fixed radioid.net name lookups [Yiannis Sam].
+- Fixed graying out relayed locator reports.
+- Delayed initial WiFi check by 30 seconds.
+- Made latest Malahit-R1 driver work.
+
 **1.2.103**
 - Added WiFi connections configuration.
 - Added standalone hotspot configuration.
