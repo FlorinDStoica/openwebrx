@@ -466,6 +466,7 @@ class DspManager(SdrSourceEventClient, ClientDemodulatorSecondaryDspEventClient)
             "audio_service_id": "int",
             "nr_enabled": "bool",
             "nr_threshold": "int",
+            "rig_transmit": "bool",
         }
         self.localProps = PropertyValidator(PropertyLayer().filter(*validators.keys()), validators)
 
@@ -485,6 +486,7 @@ class DspManager(SdrSourceEventClient, ClientDemodulatorSecondaryDspEventClient)
                 "wfm_rds_rbds",
                 "digital_voice_codecserver",
                 "rig_enabled",
+                "rig_tx_enabled",
                 "dab_output_rate",
                 "ssb_agc_profile",
                 "nfm_agc_profile",
@@ -517,6 +519,7 @@ class DspManager(SdrSourceEventClient, ClientDemodulatorSecondaryDspEventClient)
 
         self.readers = {}
 
+        mode = None
         if "start_mod" in self.props:
             mode = Modes.findByModulation(self.props["start_mod"])
             if mode:
@@ -610,7 +613,7 @@ class DspManager(SdrSourceEventClient, ClientDemodulatorSecondaryDspEventClient)
             return Am(AgcProfile(self.props["am_agc_profile"]))
         elif demod == "sam":
             from csdr.chain.analog import SAm
-            return SAm(AgcProfile(self.props["am_agc_profile"]))
+            return SAm(self.props["output_rate"], AgcProfile(self.props["am_agc_profile"]))
         elif demod in ["usb", "lsb", "cw"]:
             from csdr.chain.analog import Ssb
             return Ssb(AgcProfile(self.props["ssb_agc_profile"]))
@@ -772,6 +775,9 @@ class DspManager(SdrSourceEventClient, ClientDemodulatorSecondaryDspEventClient)
             # WMBus likes 1.2Msps, which does not work for other ISM
             from csdr.chain.toolbox import IsmDemodulator
             return IsmDemodulator(1200000)
+        elif mod == "speech":
+            from csdr.chain.toolbox import AudioTranscriber
+            return AudioTranscriber()
         elif mod == "hfdl":
             from csdr.chain.aircraft import HfdlDemodulator
             return HfdlDemodulator()

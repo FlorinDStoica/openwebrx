@@ -5,7 +5,7 @@ from owrx.form.input.dab import DabOutputRateValues
 from owrx.form.input.wfm import WfmTauValues
 from owrx.form.input.wsjt import Q65ModeMatrix, WsjtDecodingDepthsInput
 from owrx.form.input.converter import OptionalConverter
-from owrx.form.input.validator import RangeValidator
+from owrx.form.input.validator import RangeValidator, UrlValidator
 from owrx.wsjt import Fst4Profile, Fst4wProfile
 from owrx.breadcrumb import Breadcrumb, BreadcrumbItem
 
@@ -103,20 +103,43 @@ class DecodingSettingsController(SettingsFormController):
                 NumberInput(
                     "rec_squelch",
                     "Recording squelch level",
-                    validator=RangeValidator(5, 70),
+                    validator=RangeValidator(0, 70),
                     infotext="Signal-to-noise ratio (SNR) that triggers recording",
                     append="dB",
                 ),
                 NumberInput(
                     "rec_hang_time",
                     "Recording squelch hang time",
-                    validator=RangeValidator(0, 5000),
+                    validator=RangeValidator(0, 15000),
                     infotext="Time recording keeps going after signal disappears",
                     append="ms",
                 ),
                 CheckboxInput(
                     "rec_produce_silence",
                     "Record silence when there is no signal",
+                ),
+            ),
+            Section(
+                "Speech to text transcription",
+                TextInput(
+                    "speech_url",
+                    "Whisper transcription server",
+                    infotext="Server URL used to send audio for transcription into text",
+                    validator=UrlValidator(),
+                ),
+                NumberInput(
+                    "speech_squelch",
+                    "Transcription squelch level",
+                    validator=RangeValidator(0, 70),
+                    infotext="Signal-to-noise ratio (SNR) that triggers transcription",
+                    append="dB",
+                ),
+                NumberInput(
+                    "speech_hang_time",
+                    "Transcription squelch hang time",
+                    validator=RangeValidator(0, 15000),
+                    infotext="Time transcription keeps going after signal disappears",
+                    append="ms",
                 ),
             ),
             Section(

@@ -225,6 +225,7 @@
             </div>
             <div id="openwebrx-panels-container-right">
                 <div class="openwebrx-panel" id="openwebrx-panel-receiver" data-panel-name="client-params" style="width: 259px;">
+                    <div class="openwebrx-plugin-stack" id="openwebrx-panel-plugins"></div>
                     <div class="openwebrx-panel-line frequencies-container">
                         <div class="frequencies">
                             <div class="webrx-actual-freq"></div>
@@ -333,6 +334,7 @@
                                 <option value="teejeez">Teejeez</option>
                                 <option value="ocean">Ocean</option>
                                 <option value="eclipse">Eclipse</option>
+                                <option value="wave">Wave</option>
                             </select>
                         </div>
                         <div class="openwebrx-panel-line">
@@ -345,6 +347,12 @@
                             <label class="openwebrx-checkbox">
                                 <input id="openwebrx-wheel-checkbox" type="checkbox" onchange="UI.toggleWheelSwap(this.checked);" />
                                 Hold mouse wheel down to tune
+                            </label>
+                        </div>
+                        <div class="openwebrx-panel-line">
+                            <label class="openwebrx-checkbox">
+                                <input id="openwebrx-crossfreq-checkbox" type="checkbox" onchange="UI.toggleCrossFreq(this.checked);" />
+                                Show pointer frequency
                             </label>
                         </div>
                         <div class="openwebrx-panel-line">
@@ -394,6 +402,8 @@
             </span>
             <div>Start OpenWebRX+</div>
         </div>
+    </div>
+    <div id="openwebrx-message-bubble" class="openwebrx-bubble" style="display:none;">
     </div>
     <div id="openwebrx-dialog-bookmark" class="openwebrx-dialog" style="display:none;">
         <form>
